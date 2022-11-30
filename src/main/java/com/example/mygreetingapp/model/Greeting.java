@@ -1,4 +1,4 @@
-package com.example.mygreetingapp.controller;
+package com.example.mygreetingapp.model;
 
 public class Greeting {
     private final long id;
@@ -8,6 +8,7 @@ public class Greeting {
         this.id = id;
         this.content = content;
     }
+
 
     public long getId() {
         return id;

@@ -1,35 +1,26 @@
 package com.example.mygreetingapp.controller;
 
+import com.example.mygreetingapp.model.Greeting;
+import com.example.mygreetingapp.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@RequestMapping("/greeting")
 public class GreetingController {
-    private static final String template = " Hello , %s";
+    @Autowired
+    GreetingService greetService;
     private final AtomicLong counter = new AtomicLong();
 
-    //@RequestParam annotation
-    @RequestMapping("/greeting")
-    public  Greeting greeting(@RequestParam(value = "name" , defaultValue = "world") String name){
+    @GetMapping("/hellomsg")
+    public Greeting greeting(){
 
-        return new Greeting(counter.incrementAndGet() , String.format(template,name));
+        return new Greeting( counter.incrementAndGet(),String.format(greetService.greetingMsg()));
     }
 
-    //PathVariable annotation
-    @GetMapping("/greeting/{name}")
-    public Greeting greetingUsedPathVariable(@PathVariable String name){
-        return new Greeting(counter.incrementAndGet() , String.format(template,name));
-    }
-    //POST Mapping   @RequestBody annotation
-    @PostMapping("/greeting")
-    public Greeting greetingUsePostMapping(@RequestBody String name){
-        return new Greeting(counter.incrementAndGet() , String.format(template,name));
-    }
-    //PutMapping
-    @PutMapping("/greeting/{name}")
-    public Greeting greetingUsedPutMapping(@PathVariable String name){
-        return new Greeting(counter.incrementAndGet() , String.format(template,name));
-    }
+
+
 }
 
