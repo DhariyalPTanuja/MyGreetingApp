@@ -39,5 +39,10 @@ public Greeting saveMsg(Greeting greeting){
 
     }
 
+    //UC 8 to delete a Greeting Messages in the Repository
+    public void deleteGreetMessage(int id){
+        greetingRepo.deleteById(id);
+    }
+
 
 }

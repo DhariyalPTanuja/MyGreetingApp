@@ -36,5 +36,10 @@ public class GreetingController {
     public Greeting updateGreetingData(@PathVariable int id,@RequestBody Greeting greeting){
         return  greetService.updateGreetMessage(id, greeting);
     }
+    //UC 8
+    @DeleteMapping("/delete/{id}")
+    public void deleteGreetingData(@PathVariable int id){
+        greetService.deleteGreetMessage(id);
+    }
 }
 
