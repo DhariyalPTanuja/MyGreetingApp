@@ -5,13 +5,25 @@ import com.example.mygreetingapp.repository.IGreetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class GreetingService {
     private static final String template = " Hello , %s";
 @Autowired
     IGreetingRepo greetingRepo;
-    public Greeting saveMsg(Greeting greeting){
+public String display(){
+    return  "Hello world!!";
+}
+public Greeting saveMsg(Greeting greeting){
         return greetingRepo.save(greeting);
     }
+
+    public  Greeting getMsgById(int id){
+        Greeting greeting = greetingRepo.findById(id).get();
+        return greeting;
+    }
+
 
 }

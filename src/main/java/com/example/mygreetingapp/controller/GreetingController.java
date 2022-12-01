@@ -12,12 +12,19 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GreetingController {
     @Autowired
     GreetingService greetService;
-
+    @GetMapping("/display")
+    public String getDisplay(){
+        return greetService.display();
+    }
     @PostMapping("/save")
     public Greeting insertMsg(@RequestBody Greeting greeting){
         return greetService.saveMsg(greeting);
     }
 
+    @GetMapping("/getmsgbyid/{id}")
+    public Greeting getMsg(@PathVariable int id ){
+        return greetService.getMsgById(id);
+    }
 
 
 }

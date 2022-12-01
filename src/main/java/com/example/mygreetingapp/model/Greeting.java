@@ -1,44 +1,40 @@
 package com.example.mygreetingapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
-import java.util.concurrent.atomic.AtomicLong;
 @Entity
 @Table (name = "Greeting_Message")
 public class Greeting {
     @Id
-    @GeneratedValue
-    private  long id;
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private int id;
     private  String content;
     private String firstName;
     private String lastName;
 
+public Greeting() {
 
-    public Greeting(long id, String content) {
-        this.id = id;
-        this.content = content;
-    }
-
-    public Greeting(long id, String content, String firstName, String lastName) {
+}
+    public Greeting(int id, String content, String firstName, String lastName) {
         this.id = id;
         this.content = content;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Greeting() {
-
-    }
-
     public long getId() {
         return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getContent() {
         return content;
+    }
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getFirstName() {
