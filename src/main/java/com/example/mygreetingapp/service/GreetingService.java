@@ -24,10 +24,19 @@ public Greeting saveMsg(Greeting greeting){
         Greeting greeting = greetingRepo.findById(id).get();
         return greeting;
     }
-//UC6 List all the Greeting Messages
+//UC 6 List all the Greeting Messages
     public  List<Greeting> getAllGreetingMsg(){
         List<Greeting> greetingList = greetingRepo.findAll();
         return greetingList;
+    }
+    //UC 7 To Edit a Greeting Messages in the Repository
+    public Greeting updateGreetMessage(int id,Greeting greetingObj ) {
+        Optional<Greeting> greetingUpdate =greetingRepo.findById(id);
+        greetingUpdate.get().setFirstName(greetingObj.getFirstName());
+        greetingUpdate.get().setFirstName(greetingObj.getLastName());
+        greetingRepo.save(greetingUpdate.get());
+        return greetingUpdate.get();
+
     }
 
 

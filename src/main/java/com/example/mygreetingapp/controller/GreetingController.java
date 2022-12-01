@@ -31,6 +31,10 @@ public class GreetingController {
     public List<Greeting> getFindAll(){
         return greetService.getAllGreetingMsg();
     }
-
+    //UC 7
+    @PutMapping("/update/{id}")
+    public Greeting updateGreetingData(@PathVariable int id,@RequestBody Greeting greeting){
+        return  greetService.updateGreetMessage(id, greeting);
+    }
 }
 
