@@ -5,6 +5,7 @@ import com.example.mygreetingapp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -25,7 +26,11 @@ public class GreetingController {
     public Greeting getMsg(@PathVariable int id ){
         return greetService.getMsgById(id);
     }
-
+    //Uc 6
+    @GetMapping("/getall")
+    public List<Greeting> getFindAll(){
+        return greetService.getAllGreetingMsg();
+    }
 
 }
 

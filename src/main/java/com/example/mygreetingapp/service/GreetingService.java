@@ -24,6 +24,11 @@ public Greeting saveMsg(Greeting greeting){
         Greeting greeting = greetingRepo.findById(id).get();
         return greeting;
     }
+//UC6 List all the Greeting Messages
+    public  List<Greeting> getAllGreetingMsg(){
+        List<Greeting> greetingList = greetingRepo.findAll();
+        return greetingList;
+    }
 
 
 }
